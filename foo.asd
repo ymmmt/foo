@@ -1,10 +1,9 @@
 ;;
 ;; Copyright (c) 2005, Gigamonkeys Consulting All rights reserved.
 ;;
-(ql:quickload :practicals)
-
 (defpackage :foo-system (:use :asdf :cl))
 (in-package :foo-system)
+(ql:quickload '(:practicals :monkeylib-utilities))
 
 (defsystem foo
   :name "foo"
@@ -29,6 +28,5 @@
    (:file "javascript"       :depends-on ("packages" "language"))
    (:file "lispscript"       :depends-on ("packages" "language" "javascript" "html"))
    (:file "lispscript-tests" :depends-on ("packages" "lispscript" "html" "html-macros" "html-legacy")))
-  :depends-on (:practicals.test-framework
-               :practicals.pathnames
-               :practicals.utilities))
+   :depends-on (:practicals
+		:monkeylib-utilities))
