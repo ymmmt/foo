@@ -1,0 +1,16 @@
+#!/bin/bash
+
+tmp=/tmp/tmp.$$
+
+rename() {
+    file="$1"
+    sed -e 's/com.gigamonkeys.//g' $file > $tmp
+    cat $tmp > $file
+}
+
+for file in $@
+do
+    rename $file
+done
+
+rm $tmp
