@@ -1,10 +1,10 @@
 ;;
 ;; Copyright (c) 2005, Gigamonkeys Consulting All rights reserved.
 ;;
-
 (in-package :cl-user)
+(ql:quickload '(:practicals :monkeylib-utilities))
 
-(defpackage :com.gigamonkeys.foo.text-output
+(defpackage :foo.text-output
   (:use :cl)
   (:export
    :*pretty*
@@ -24,10 +24,10 @@
    :unindent
    :with-foo-output))
 
-(defpackage :com.gigamonkeys.foo.language
+(defpackage :foo.language
   (:use :cl
-        :com.gigamonkeys.utilities
-        :com.gigamonkeys.foo.text-output)
+        :monkeylib-utilities
+        :foo.text-output)
   (:export
    :case-preserving-readtable
    :comment
@@ -61,13 +61,13 @@
    :special-operator-symbol
    :top-level-environment))
 
-(defpackage :com.gigamonkeys.foo.xml
+(defpackage :foo.xml
   (:use :common-lisp
-        :com.gigamonkeys.utilities
-        :com.gigamonkeys.foo.text-output
-        :com.gigamonkeys.foo.language
-        :com.gigamonkeys.test
-        :com.gigamonkeys.pathnames)
+        :monkeylib-utilities
+        :foo.text-output
+        :foo.language
+        :practicals.test-framework
+        :practicals.pathnames)
   (:export
    :&attributes
    :cons-form-p
@@ -85,22 +85,22 @@
    :xhtml
    :xml))
 
-(defpackage :com.gigamonkeys.foo.css
+(defpackage :foo.css
   (:use :common-lisp
-        :com.gigamonkeys.utilities
-        :com.gigamonkeys.foo.text-output
-        :com.gigamonkeys.foo.language)
+        :monkeylib-utilities
+        :foo.text-output
+        :foo.language)
   (:export
    :emit-css
    :css))
 
-(defpackage :com.gigamonkeys.foo
+(defpackage :foo
   (:use :common-lisp
-        :com.gigamonkeys.foo.xml
-        :com.gigamonkeys.foo.css
-        :com.gigamonkeys.utilities
-        :com.gigamonkeys.foo.text-output
-        :com.gigamonkeys.foo.language)
+        :foo.xml
+        :foo.css
+        :monkeylib-utilities
+        :foo.text-output
+        :foo.language)
   (:export
    :&attributes
    :compile-javascript
@@ -130,12 +130,12 @@
    :with-html-to-file
    :xml))
 
-(defpackage com.gigamonkeys.foo.javascript
+(defpackage foo.javascript
   (:use :common-lisp
-        :com.gigamonkeys.foo
-        :com.gigamonkeys.utilities
-        :com.gigamonkeys.foo.text-output
-        :com.gigamonkeys.foo.language)
+        :foo
+        :practicals.macro-utilities
+        :foo.text-output
+        :foo.language)
   (:export
    :javascript
    :define-javascript-macro
@@ -215,19 +215,19 @@
    :with))
 
 
-(defpackage com.gigamonkeys.foo.lispscript
+(defpackage foo.lispscript
   (:use :common-lisp
-        :com.gigamonkeys.foo.language
-        :com.gigamonkeys.foo.javascript)
+        :foo.language
+        :foo.javascript)
   (:shadow :=)
   (:export :*lispscript*))
 
 
-(defpackage com.gigamonkeys.foo.lispscript-tests
+(defpackage foo.lispscript-tests
   (:use :common-lisp
-        :com.gigamonkeys.foo
-        :com.gigamonkeys.foo.xml
-        :com.gigamonkeys.foo.javascript
-        :com.gigamonkeys.foo.lispscript))
+        :foo
+        :foo.xml
+        :foo.javascript
+        :foo.lispscript))
 
-(defpackage com.gigamonkeys.foo.javascript.tokens (:use))
+(defpackage foo.javascript.tokens (:use))

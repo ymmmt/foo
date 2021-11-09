@@ -1,4 +1,4 @@
-(in-package :com.gigamonkeys.foo.xml)
+(in-package :foo.xml)
 
 (defun html->string (sexp)
   (with-output-to-string (s)

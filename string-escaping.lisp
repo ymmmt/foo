@@ -1,4 +1,4 @@
-(in-package :com.gigamonkeys.foo.xml)
+(in-package :foo.xml)
 
 (defun escape-char (char)
   (case char
