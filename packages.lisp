@@ -2,7 +2,7 @@
 ;; Copyright (c) 2005, Gigamonkeys Consulting All rights reserved.
 ;;
 (in-package :cl-user)
-(ql:quickload '(:practicals :monkeylib-utilities))
+;;(ql:quickload '(:practicals :monkeylib-utilities))
 
 (defpackage :foo.text-output
   (:use :cl)
