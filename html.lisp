@@ -34,13 +34,13 @@
   (declare (ignore body-p))
   (when (or (paragraph-element-p tag environment) (block-element-p tag environment))
     (freshline processor))
-  (raw-string processor (format nil "<~a" tag))
+  (raw-string processor (format nil "<~(~a~)" tag))
   (emit-attributes language processor attributes environment)
   (raw-string processor ">"))
 
 (defmethod emit-close-tag ((language html) processor tag body-p environment)
   (when (or body-p (not (empty-element-p tag environment)))
-    (raw-string processor (format nil "</~a>" tag)))
+    (raw-string processor (format nil "</~(~a~)>" tag)))
   (when (or (paragraph-element-p tag environment) (block-element-p tag environment))
     (freshline processor)))
 
